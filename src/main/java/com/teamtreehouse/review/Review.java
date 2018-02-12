@@ -2,6 +2,7 @@ package com.teamtreehouse.review;
 
 import com.teamtreehouse.core.BaseEntity;
 import com.teamtreehouse.course.Course;
+import com.teamtreehouse.user.User;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -12,6 +13,8 @@ public class Review extends BaseEntity{
   private String description;
   @ManyToOne
   private Course course;
+  @ManyToOne
+  private User reviewer;
 
   protected Review() {
     super();
@@ -20,6 +23,14 @@ public class Review extends BaseEntity{
   public Review(int rating, String description) {
     this.rating = rating;
     this.description = description;
+  }
+
+  public User getReviewer() {
+    return reviewer;
+  }
+
+  public void setReviewer(User reviewer) {
+    this.reviewer = reviewer;
   }
 
   public Course getCourse() {
